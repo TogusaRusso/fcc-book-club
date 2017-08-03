@@ -101,13 +101,11 @@ module.exports = function (app, passport) {
       requestController.byOwner(req.user.local.email),
       requestController.byNewOwner(req.user.local.email)
     ])
-    .then(requests => {
-      console.log(requests)
+    .then(requests =>
       res.render('requests', {
         incomingRequests: requests[0],
         requests: requests[1]
-      })
-    })
+      }))
     .catch(err => console.error(err))
   )
   app.get('/logout', (req, res) => {
