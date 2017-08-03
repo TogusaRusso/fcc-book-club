@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1
+    i.material-icons.medium.left add
+    |Add book
+  //- SIGNUP FORM 
+  form(action="/new", method="post")
+    .row
+      .input-field.col.s12
+        input#name(name="name", type="text")
+        label(for='name') Book's name
+    .row
+      .input-field.col.s12
+        input#imgUrl(name="imgUrl", type="text")
+        label(for='imgUrl') Book cover image url
+    button.waves-effect.waves-light.btn(type="submit") Add

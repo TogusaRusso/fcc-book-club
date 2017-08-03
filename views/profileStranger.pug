@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .container
+    .page-header.text-center
+      h1
+        span.fa.fa-anchor
+        |Profile Page
+    br
+    h4 Personal data
+    .row
+      i.material-icons.left account_circle
+      = ' ' + email
+    .row= 'Full name: ' + personal.fullName
+    .row= 'State: ' + personal.state
+    .row= 'City: ' + personal.city
+  

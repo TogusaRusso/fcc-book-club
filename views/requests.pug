@@ -1,0 +1,36 @@
+extends layout
+
+block content
+    .row
+      .col.m6
+        h4 Incoming requests
+        each request in incomingRequests
+          .card
+            .card-content
+              span.card-title= request.bookName
+              |Request from 
+              a(href='/profile/' + request.newOwner)= request.newOwner
+            .card-action
+              if !request.granted && !request.denied
+                a.green-text(href='/requests/grant/' + request._id) Grant
+                a.red-text(href='/requests/deny/' + request._id) Deny
+              if request.granted
+                p.green-text GRANTED
+              if request.denied && !request.granted
+                p.red-text DENIED
+      .col.m6
+        h4 Your requests
+        each request in requests
+          .card
+            .card-content
+              span.card-title= request.bookName
+              | Owner is 
+              a(href='/profile/' + request.owner)= request.owner
+            .card-action
+              if !request.granted && !request.denied
+                p PENDING
+              if request.denied
+                p.red-text DENIED
+              if request.granted
+                p.green-text GRANTED
+              

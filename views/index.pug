@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .row
+    each book in books
+      .col.m3
+        .card
+          .card-image
+            img.responsive-img(src=book.imgUrl)
+            if user && user.local.email !== book.owner && !book.newOwner
+              a.btn-floating.halfway-fab.waves-effect.waves-light.green(
+                href='/requests/new/' + book._id
+              )
+                i.material-icons add
+          .card-content= book.name
+          if user && user.local.email !== book.owner && !book.newOwner
+            .card-action
+              a(href='/profile/' + book.owner) owner's profile

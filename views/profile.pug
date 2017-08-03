@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  .container
+    .page-header.text-center
+      h1
+        span.fa.fa-anchor
+        |Profile Page
+      a.btn.btn-default.btn-sm(href="/logout") Logout
+    br
+    .row
+      i.material-icons.left account_circle
+      = ' ' + user.local.email
+    h4 Personal data
+    form(action="/profile", method="post")
+      .row
+        .input-field.col.s12
+          input#fullName(name="fullName", type="text", value=personal.fullName)
+          label(for='fullName') Full name
+      .row
+        .input-field.col.s12
+          input#state(name="state", type="text", value=personal.state)
+          label(for='state') State
+      .row
+        .input-field.col.s12
+          input#city(name="city", type="text", value=personal.city)
+          label(for='city') City
+      button.waves-effect.waves-light.btn(type="submit") Update
